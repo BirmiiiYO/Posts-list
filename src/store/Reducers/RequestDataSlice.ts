@@ -24,6 +24,12 @@ export const requestDataSlice = createSlice({
     setActiveSortBy(state, action: PayloadAction<'name' | 'title' | 'likes'>) {
       state.sortBy = action.payload;
     },
+    setTotalForPage(state, action: PayloadAction<number>) {
+      state.limit = action.payload;
+    },
+    setFilterData(state, action: PayloadAction<string>) {
+      state.filter = action.payload;
+    },
   },
 });
 

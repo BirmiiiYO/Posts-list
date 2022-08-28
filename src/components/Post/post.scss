@@ -3,6 +3,12 @@
   border: 1px solid green;
   border-radius: 10px;
   max-width: 50vw;
+  @media (max-width: 750px) {
+    margin: 3px;
+  }
+  @media (max-width: 1000px) {
+    max-width: 80vw;
+  }
 }
 .title {
   display: flex;
@@ -14,6 +20,9 @@
     font-family: cursive;
     margin: 0 0 5px 10px;
   }
+  @media (max-width: 666px) {
+    display: block;
+  }
 }
 .text {
   padding: 0 10px 10px 10px;
@@ -22,6 +31,17 @@
 .btns {
   margin: 5px 0 10px 10px;
   display: flex;
-  width: 10vw;
+  width: 50%;
   justify-content: space-around;
+  @media (max-width: 950px) {
+    width: 100%;
+  }
+  @media (max-width: 700px) {
+    margin: 3px;
+    justify-content: space-evenly;
+  }
+}
+main {
+  display: flex;
+  justify-content: center;
 }

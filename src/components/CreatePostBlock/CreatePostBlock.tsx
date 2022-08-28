@@ -1,11 +1,15 @@
+import { Button } from 'antd';
 import { FC, useState } from 'react';
-import { useAppSelector } from '../../hooks/redux';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { IPost } from '../../models/Post';
 import { postAPI } from '../../services/postService';
+import { createPostSlice } from '../../store/Reducers/createPostSlice';
 
 import './createPostBlock.scss';
 
 const CreatePostBlock: FC = () => {
+  const dispatch = useAppDispatch();
+  const { setActiveForm } = createPostSlice.actions;
   const { activeForm } = useAppSelector((state) => state.createPostReducer);
   const [createPost] = postAPI.useCreatePostMutation();
 
@@ -16,12 +20,13 @@ const CreatePostBlock: FC = () => {
   const HandleSubmit = async () => {
     const NewPost: IPost = {
       body: body,
-      id: `${100}`,
+      id: ``,
       likes: 0,
       name: name,
       title: title,
     };
     await createPost(NewPost);
+    dispatch(setActiveForm());
   };
   return (
     <div className="postBlock" style={activeForm ? { display: 'block' } : { display: 'none' }}>
@@ -45,8 +50,9 @@ const CreatePostBlock: FC = () => {
           placeholder="body"
         />
 
-        {/* <input type="submit" /> */}
-        <button onClick={HandleSubmit}>aDD</button>
+        <Button type="primary" onClick={HandleSubmit}>
+          Add
+        </Button>
       </form>
     </div>
   );

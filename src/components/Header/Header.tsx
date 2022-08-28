@@ -15,10 +15,17 @@ const Header: FC = () => {
       <PageHeader
         ghost={false}
         title="Posts"
+        subTitle="create by BirmiiiYooo"
         extra={[
-          <Button onClick={() => dispatch(setActiveSortBy('name'))}>by Name</Button>,
-          <Button onClick={() => dispatch(setActiveSortBy('title'))}>by Title</Button>,
-          <Button onClick={() => dispatch(setActiveSortBy('likes'))}>By likes</Button>,
+          <Button type="primary" onClick={() => dispatch(setActiveSortBy('name'))}>
+            by Name
+          </Button>,
+          <Button type="primary" onClick={() => dispatch(setActiveSortBy('title'))}>
+            by Title
+          </Button>,
+          <Button type="primary" onClick={() => dispatch(setActiveSortBy('likes'))}>
+            By likes
+          </Button>,
         ]}
       ></PageHeader>
     </div>

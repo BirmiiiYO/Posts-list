@@ -31,10 +31,17 @@ ul {
 }
 .container {
   margin-top: 6vh;
-  background-color: rgb(166, 165, 165);
   width: 80vw;
-  height: 2000px;
-  border-radius: 20px;
   display: flex;
   justify-content: center;
+  border: 1px solid black;
+  margin-bottom: 3vh;
+  background-color: rgb(171, 169, 175);
+  border-radius: 5px;
+  @media (max-width: 800px) {
+    width: 95vw;
+  }
+  @media (max-width: 500px) {
+    width: 100%;
+  }
 }

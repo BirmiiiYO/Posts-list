@@ -9,15 +9,15 @@ const Pagin: FC = () => {
   const dispatch = useAppDispatch();
   const { activePage } = useAppSelector((state) => state.requestDataReducer);
 
-  const { setActivePage } = requestDataSlice.actions;
+  const { setActivePage, setTotalForPage } = requestDataSlice.actions;
+  const onShowSizeChange = (page: number, pageSize: number) => {
+    dispatch(setActivePage(page));
+    dispatch(setTotalForPage(pageSize));
+  };
 
   return (
     <div className="pagination">
-      <Pagination
-        current={activePage}
-        onChange={(page) => dispatch(setActivePage(page))}
-        total={50}
-      />
+      <Pagination onChange={onShowSizeChange} defaultCurrent={activePage} total={100} />
     </div>
   );
 };
