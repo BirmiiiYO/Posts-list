@@ -1,0 +1,30 @@
+.postBlock {
+  position: absolute;
+  width: 18vw;
+  left: 41%;
+  top: 25%;
+  height: 250px;
+  background-color: aliceblue;
+  z-index: 2;
+  border-radius: 10px;
+  box-shadow: 100% 100% 200px 1px rgba(0, 0, 0, 0.2);
+}
+
+form {
+  width: 100%;
+  padding: 20px;
+}
+input {
+  width: 95%;
+  height: 50px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  padding-left: 5px;
+  font-size: 24px;
+
+  &::placeholder {
+    opacity: 0.7;
+    font-size: 20px;
+  }
+}

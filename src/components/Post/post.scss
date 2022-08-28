@@ -1,0 +1,27 @@
+.block {
+  margin: 10px 20px 0 20px;
+  border: 1px solid green;
+  border-radius: 10px;
+  max-width: 50vw;
+}
+.title {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px 0 0 10px;
+  label {
+    font-size: 18px;
+    font-family: cursive;
+    margin: 0 0 5px 10px;
+  }
+}
+.text {
+  padding: 0 10px 10px 10px;
+  font-size: 18px;
+}
+.btns {
+  margin: 5px 0 10px 10px;
+  display: flex;
+  width: 10vw;
+  justify-content: space-around;
+}
