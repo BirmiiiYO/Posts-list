@@ -3,7 +3,8 @@ import { IPost } from '../../models/Post';
 
 export interface createPostState {
   data: IPost;
-  activeForm: boolean;
+  activeFormCreate: boolean;
+  activeFormUpdate: boolean;
 }
 
 const initialState: createPostState = {
@@ -14,15 +15,19 @@ const initialState: createPostState = {
     name: 'Add name',
     title: 'Add title',
   },
-  activeForm: false,
+  activeFormCreate: false,
+  activeFormUpdate: false,
 };
 
 export const createPostSlice = createSlice({
   name: 'requestData',
   initialState,
   reducers: {
-    setActiveForm(state) {
-      state.activeForm = !state.activeForm;
+    setActiveCreateForm(state) {
+      state.activeFormCreate = !state.activeFormCreate;
+    },
+    setActiveUpdateForm(state) {
+      state.activeFormUpdate = !state.activeFormUpdate;
     },
   },
 });

@@ -8,9 +8,9 @@ import './input.scss';
 
 const Input: FC = () => {
   const dispatch = useAppDispatch();
-  const { setActiveForm } = createPostSlice.actions;
+  const { setActiveCreateForm } = createPostSlice.actions;
   const { setFilterData } = requestDataSlice.actions;
-  const { activeForm } = useAppSelector((state) => state.createPostReducer);
+  const { activeFormCreate } = useAppSelector((state) => state.createPostReducer);
   const { filter } = useAppSelector((state) => state.requestDataReducer);
   return (
     <>
@@ -25,9 +25,9 @@ const Input: FC = () => {
         <Button
           type="primary"
           style={{ marginBottom: '10px' }}
-          onClick={() => dispatch(setActiveForm())}
+          onClick={() => dispatch(setActiveCreateForm())}
         >
-          {activeForm ? 'Close form to add' : 'Add new post'}
+          {activeFormCreate ? 'Close form to add' : 'Add new post'}
         </Button>
       </div>
     </>

@@ -1,4 +1,5 @@
-import { Button } from 'antd';
+import { Button, notification } from 'antd';
+import { NotificationPlacement } from 'antd/lib/notification';
 import { FC, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { IPost } from '../../models/Post';
@@ -9,27 +10,41 @@ import './createPostBlock.scss';
 
 const CreatePostBlock: FC = () => {
   const dispatch = useAppDispatch();
-  const { setActiveForm } = createPostSlice.actions;
-  const { activeForm } = useAppSelector((state) => state.createPostReducer);
+  const { setActiveCreateForm } = createPostSlice.actions;
+  const { activeFormCreate } = useAppSelector((state) => state.createPostReducer);
   const [createPost] = postAPI.useCreatePostMutation();
 
   const [name, setName] = useState('');
   const [title, setTtile] = useState('');
   const [body, setBody] = useState('');
 
+  const openNotification = (placement: NotificationPlacement) => {
+    notification.info({
+      message: `New post added successfully`,
+      placement,
+    });
+  };
+
   const HandleSubmit = async () => {
     const NewPost: IPost = {
-      body: body,
+      body: body ? body : 'no text',
       id: ``,
       likes: 0,
-      name: name,
-      title: title,
+      name: name ? name : 'no name',
+      title: title ? title : 'no title',
     };
     await createPost(NewPost);
-    dispatch(setActiveForm());
+    setName('');
+    setBody('');
+    setTtile('');
+    dispatch(setActiveCreateForm());
+    openNotification('bottomRight');
   };
   return (
-    <div className="postBlock" style={activeForm ? { display: 'block' } : { display: 'none' }}>
+    <div
+      className="postBlock"
+      style={activeFormCreate ? { display: 'block' } : { display: 'none' }}
+    >
       <form>
         <input
           value={name}
@@ -49,7 +64,6 @@ const CreatePostBlock: FC = () => {
           type="text"
           placeholder="body"
         />
-
         <Button type="primary" onClick={HandleSubmit}>
           Add
         </Button>
